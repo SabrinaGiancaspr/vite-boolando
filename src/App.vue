@@ -1,8 +1,10 @@
 <script>
 import AppNav from './components/AppNav.vue';
+import AppMainContent from './components/AppMainContent.vue';
 export default {
     components: {
     AppNav,
+    AppMainContent
 },
   data() {
     return {
@@ -14,7 +16,7 @@ export default {
 
 <template>
 <AppNav />
-
+<AppMainContent />
 
 </template>
 

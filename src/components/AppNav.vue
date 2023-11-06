@@ -21,7 +21,6 @@ export default {
           <li class="logo"><img  :src="logo" alt=""></li>
           <li v-for="icon in icons" class="icons"><a href="#">{{ icon }}</a></li>
         </ul>
-
       </nav>
     </div>
   </header>
@@ -59,8 +58,4 @@ export default {
   }
 }
 
-/* icons  */
-// .bi-person{
-//   margin-left: 150px;
-// }
 </style>
