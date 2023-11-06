@@ -82,6 +82,7 @@ export default {
     <div class="container">
         <div class="row">
             <div v-for="card in cards" class="card">
+                <span class="heart">	&hearts;</span>
                 <img class="first-img" :src="card.img" alt="">
                 <img class="img-none" :src="card.imgNone" alt="">
                 <div class="tag-container">
@@ -94,7 +95,6 @@ export default {
                 <div class="price-container">
                     <p class="discount-price">{{ calcDiscount(card.price, card.discount) }} &euro;</p>
                     <p class="price" v-show=" card.discount !=0">{{ card.price }} &euro;</p>
-
                 </div>
 
             </div>
@@ -120,6 +120,23 @@ export default {
         display: none;
        }
 
+    }
+
+    .heart{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 30px;
+        background-color: white;
+        width: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        aspect-ratio: 1;
+
+        &:hover{
+            color: red;
+        }
     }
     .img-none{
         display: none;
