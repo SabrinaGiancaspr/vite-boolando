@@ -10,7 +10,7 @@ export default {
                     discount: "50",
                     brand: "Levi's",
                     tag: "Sostenibilità",
-                    imgNone: "/1b.webp"
+                    imgNone: "/1b.webp",
                 },
                 {
                     img: "/2.webp",
@@ -19,7 +19,7 @@ export default {
                     discount: "30",
                     brand: "Guess",
                     tag: "",
-                    imgNone: "/2b.webp"
+                    imgNone: "/2b.webp",
                 },
                 {
                     img: "/3.webp",
@@ -28,7 +28,7 @@ export default {
                     discount: "30",
                     brand: "Come Zucchero Filato",
                     tag: "",
-                    imgNone: "/3b.webp"
+                    imgNone: "/3b.webp",
                 },
                 {
                     img: "/4.webp",
@@ -37,7 +37,7 @@ export default {
                     discount: "50",
                     brand: "Levi's",
                     tag: "Sostenibilità",
-                    imgNone: "/4b.webp"
+                    imgNone: "/4b.webp",
                 },
                 {
                     img: "/5.webp",
@@ -46,7 +46,7 @@ export default {
                     discount: "0",
                     brand: "Maya Deluxe",
                     tag: "",
-                    imgNone: "/5b.webp"
+                    imgNone: "/5b.webp",
                 },
                 {
                     img: "/6.webp",
@@ -55,48 +55,49 @@ export default {
                     discount: "0",
                     brand: "Espirit",
                     tag: "Sostenibilità",
-                    imgNone: "/6b.webp"
-                }
-
-            ]
-        }
+                    imgNone: "/6b.webp",
+                },
+            ],
+        };
     },
     methods: {
         calcDiscount(price, discount) {
-            
             const priceNumber = parseFloat(price);
             const discountNumber = parseFloat(discount);
-            if (discountNumber === 0 ) {
+            if (discountNumber === 0) {
                 return priceNumber;
             }
             const totalDiscount = (priceNumber * discountNumber) / 100;
             const finalPrice = priceNumber - totalDiscount;
-            
+
             return finalPrice.toFixed(2);
-        }
-    }
-}
+        },
+    },
+};
 </script>
 
 <template>
     <div class="container">
         <div class="row">
             <div v-for="card in cards" class="card">
-                <span class="heart">	&hearts;</span>
-                <img class="first-img" :src="card.img" alt="">
-                <img class="img-none" :src="card.imgNone" alt="">
+                <span class="heart"> &hearts;</span>
+                <img class="first-img" :src="card.img" alt="" />
+                <img class="img-none" :src="card.imgNone" alt="" />
                 <div class="tag-container">
                     <span class="discount" v-show="card.discount != 0">-{{ card.discount }}%</span>
-                    <span class="tag" v-show="card.tag !=''">{{ card.tag }}</span>
+                    <span class="tag" v-show="card.tag != ''">{{ card.tag }}</span>
                 </div>
 
                 <p class="brand">{{ card.brand }}</p>
                 <p class="description">{{ card.description }}</p>
                 <div class="price-container">
-                    <p class="discount-price">{{ calcDiscount(card.price, card.discount) }} &euro;</p>
-                    <p class="price" v-show=" card.discount !=0">{{ card.price }} &euro;</p>
+                    <p class="discount-price">
+                        {{ calcDiscount(card.price, card.discount) }} &euro;
+                    </p>
+                    <p class="price" v-show="card.discount != 0">
+                        {{ card.price }} &euro;
+                    </p>
                 </div>
-
             </div>
         </div>
     </div>
@@ -111,18 +112,18 @@ export default {
     margin-top: 50px;
     cursor: pointer;
     padding: 0 10px;
-    &:hover{
-       .img-none{
-        display: block;
-       }
 
-       .first-img{
-        display: none;
-       }
+    &:hover {
+        .img-none {
+            display: block;
+        }
 
+        .first-img {
+            display: none;
+        }
     }
 
-    .heart{
+    .heart {
         position: absolute;
         top: 10px;
         right: 10px;
@@ -134,47 +135,48 @@ export default {
         justify-content: center;
         aspect-ratio: 1;
 
-        &:hover{
+        &:hover {
             color: red;
         }
     }
-    .img-none{
+
+    .img-none {
         display: none;
     }
-    .tag-container{
+
+    .tag-container {
         display: flex;
         gap: 10px;
         position: absolute;
-        bottom: 100px ;
+        bottom: 100px;
         color: white;
 
-        .discount{
+        .discount {
             background-color: red;
             padding: 5px;
         }
 
-        .tag{
+        .tag {
             background-color: green;
             padding: 5px;
         }
-        
     }
-    .description{
-            font-weight: 600;
-        }
 
-    .price-container{
+    .description {
+        font-weight: 600;
+    }
+
+    .price-container {
         display: flex;
         gap: 10px;
 
-
-        .price{
+        .price {
             text-decoration: line-through;
         }
-        .discount-price{
+
+        .discount-price {
             color: red;
             font-weight: bold;
         }
     }
-}
-</style>
+}</style>
