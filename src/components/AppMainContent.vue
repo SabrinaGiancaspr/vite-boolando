@@ -87,6 +87,7 @@ export default {
         color: white;
 
         .discount {
+            order: -1;
             background-color: red;
             padding: 5px;
         }
