@@ -1,64 +1,14 @@
 <script>
+
 export default {
+
     data() {
         return {
-            cards: [
-                {
-                    img: "/1.webp",
-                    description: "RELAXED FIT TEE UNISEX",
-                    price: "29.99",
-                    discount: "50",
-                    brand: "Levi's",
-                    tag: "Sostenibilità",
-                    imgNone: "/1b.webp",
-                },
-                {
-                    img: "/2.webp",
-                    description: "ROSES TEE",
-                    price: "29.99",
-                    discount: "30",
-                    brand: "Guess",
-                    tag: "",
-                    imgNone: "/2b.webp",
-                },
-                {
-                    img: "/3.webp",
-                    description: "VOGLIA DI COLORI PASTELLO",
-                    price: "184.99",
-                    discount: "30",
-                    brand: "Come Zucchero Filato",
-                    tag: "",
-                    imgNone: "/3b.webp",
-                },
-                {
-                    img: "/4.webp",
-                    description: "TEE UNISEX",
-                    price: "29.99",
-                    discount: "50",
-                    brand: "Levi's",
-                    tag: "Sostenibilità",
-                    imgNone: "/4b.webp",
-                },
-                {
-                    img: "/5.webp",
-                    description: "STRIPE BODICE",
-                    price: "99.99",
-                    discount: "0",
-                    brand: "Maya Deluxe",
-                    tag: "",
-                    imgNone: "/5b.webp",
-                },
-                {
-                    img: "/6.webp",
-                    description: "MAGLIONE - BLACK",
-                    price: "29.99",
-                    discount: "0",
-                    brand: "Espirit",
-                    tag: "Sostenibilità",
-                    imgNone: "/6b.webp",
-                },
-            ],
+            
         };
+    },
+    props: {
+        card: Object
     },
     methods: {
         calcDiscount(price, discount) {
@@ -72,56 +22,41 @@ export default {
 
             return finalPrice.toFixed(2);
         },
+
     },
+
 };
 </script>
 
 <template>
-    <div class="container">
-        <div class="row">
-            <div v-for="card in cards" class="card">
-                <span class="heart"> &hearts;</span>
-                <img class="first-img" :src="card.img" alt="" />
-                <img class="img-none" :src="card.imgNone" alt="" />
-                <div class="tag-container">
-                    <span class="discount" v-show="card.discount != 0">-{{ card.discount }}%</span>
-                    <span class="tag" v-show="card.tag != ''">{{ card.tag }}</span>
-                </div>
-
-                <p class="brand">{{ card.brand }}</p>
-                <p class="description">{{ card.description }}</p>
-                <div class="price-container">
-                    <p class="discount-price">
-                        {{ calcDiscount(card.price, card.discount) }} &euro;
-                    </p>
-                    <p class="price" v-show="card.discount != 0">
-                        {{ card.price }} &euro;
-                    </p>
-                </div>
-            </div>
-        </div>
+    
+    <span class="heart"> &hearts;</span>
+    <img class="first-img" :src="card.frontImage" alt="" />
+    <img class="img-none" :src="card.backImage" alt="" />
+    <div class="tag-container">
+        <span :class="badge.type" v-for="badge in card.badges" >{{ badge.value }}</span> 
     </div>
+
+    <p class="brand">{{ card.brand }}</p>
+    <p class="description">{{ card.name}}</p>
+    <div class="price-container">
+        <p class="discount-price">
+            {{ calcDiscount(card.price, card.discount) }} &euro;
+        </p>
+        <p class="price" v-show="card.discount != 0">
+            {{ card.price }} &euro;
+        </p>
+    </div>
+
+
 </template>
 
 <style lang="scss" scoped>
 @use "../style/partials/variables.scss" as *;
 
-.card {
-    flex-basis: calc(100% / 12 * 4);
-    position: relative;
-    margin-top: 50px;
-    cursor: pointer;
-    padding: 0 10px;
 
-    &:hover {
-        .img-none {
-            display: block;
-        }
 
-        .first-img {
-            display: none;
-        }
-    }
+
 
     .heart {
         position: absolute;
@@ -160,6 +95,11 @@ export default {
             background-color: green;
             padding: 5px;
         }
+
+        .prova {
+            background-color: blue;
+            padding: 5px;
+        }
     }
 
     .description {
@@ -179,4 +119,4 @@ export default {
             font-weight: bold;
         }
     }
-}</style>
+</style>

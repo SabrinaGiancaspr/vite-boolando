@@ -2,7 +2,7 @@
 import AppNav from './components/AppNav.vue';
 import AppMainContent from './components/AppMainContent.vue';
 import AppFooter from './components/AppFooter.vue';
-
+import Json from './db.json';
 export default {
     components: {
     AppNav,
@@ -11,17 +11,25 @@ export default {
 },
   data() {
     return {
-      title: 'Boolando',
+      cards: Json
     }
   }
 }
 </script>
 
 <template>
-<AppNav />
-<AppMainContent />
-<AppFooter />
 
+<AppNav />
+
+
+<div class="container">
+        <div class="row">
+          <div class="card" v-for="element in cards.products">
+            <AppMainContent :card="element"/>
+          </div>
+        </div>
+</div>
+<AppFooter />
 </template>
 
 <style lang="scss">

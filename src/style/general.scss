@@ -27,3 +27,21 @@ img{
     display: flex;
     flex-wrap: wrap;
 }
+
+.card {
+    flex-basis: calc(100% / 12 * 4);
+    position: relative;
+    margin-top: 50px;
+    cursor: pointer;
+    padding: 0 10px;
+
+    &:hover {
+        .img-none {
+            display: block;
+        }
+
+        .first-img {
+            display: none;
+        }
+    }
+}
