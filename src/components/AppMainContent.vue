@@ -38,7 +38,7 @@ export default {
     </div>
 
     <p class="brand">{{ card.brand }}</p>
-    <p class="description">{{ card.name}}</p>
+    <p class="description">{{ card.name.toUpperCase()}}</p>
     <div class="price-container">
         <p class="discount-price">
             {{ calcDiscount(card.price, card.discount) }} &euro;
