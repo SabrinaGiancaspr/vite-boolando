@@ -4,39 +4,37 @@ export default {
     return {};
   },
   props: {
-    card: Object,
+    card: Object, //riceve un oggetto "card" come prop
   },
   methods: {
+    // Metodo per gestire il click sul cuore per aggiungere/rimuovere dai preferiti
     heartFunction() {
-      this.card.isInFavorites = !this.card.isInFavorites;
-    },
-
-    discountCalc() {
-      for (let i = 0; i < this.card.badges.length; i++) {
-        if (this.card.badges[i].type === "discount") {
-          const discountValue = parseFloat(this.card.badges[i].value);
-          const finalPrice = (
-            (this.card.price * (100 + discountValue)) /
-            100
-          ).toFixed(2);
-
-          return finalPrice;
-        }
-      }
-      return this.card.price;
+      this.card.isInFavorites = !this.card.isInFavorites; // Inverte lo stato "isInFavorites" della carta
     },
   },
-};
+  // Metodo per calcolare il prezzo scontato, se presente, sulla carta
+  discountCalc() {
+    for (let i = 0; i < this.card.badges.length; i++) {
+      if (this.card.badges[i].type === "discount") {
+        const discountValue = parseFloat(this.card.badges[i].value);
+        const finalPrice = (
+          (this.card.price * (100 + discountValue)) /
+          100
+        ).toFixed(2); // Calcola il prezzo scontato due decimali
+
+        return finalPrice;
+      }
+    }
+    return this.card.price;// Se non ci sono sconti, restituisce il prezzo normale
+  },
+}
 </script>
 
 <template>
-  <span
-    class="heart"
-    @click="heartFunction()"
-    :class="card.isInFavorites === true ? 'red-heart' : ' '"
-  >
-    &hearts;</span
-  >
+  <!-- Visualizza il cuore per aggiungere/rimuovere dai preferiti e gestisce il colore del cuore -->
+  <span class="heart" @click="heartFunction()" :class="card.isInFavorites === true ? 'red-heart' : ' '">
+    &hearts;</span>
+  <!-- motrare img -->
   <img class="first-img" :src="card.frontImage" alt="" />
   <img class="img-none" :src="card.backImage" alt="" />
   <div class="tag-container">
@@ -48,9 +46,11 @@ export default {
   <p class="brand">{{ card.brand }}</p>
   <p class="description">{{ card.name.toUpperCase() }}</p>
   <div class="price-container">
+    <!-- Visualizza il prezzo scontato, se presente -->
     <p class="discount-price">{{ discountCalc() }} &euro;</p>
+    <!-- Visualizza il prezzo normale se è diverso dal prezzo scontato -->
     <p class="price" v-show="card.price != discountCalc()">{{ card.price }} &euro;</p>
-    
+
   </div>
 </template>
 
