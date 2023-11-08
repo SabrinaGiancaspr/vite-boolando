@@ -11,21 +11,21 @@ export default {
     heartFunction() {
       this.card.isInFavorites = !this.card.isInFavorites; // Inverte lo stato "isInFavorites" della carta
     },
-  },
-  // Metodo per calcolare il prezzo scontato, se presente, sulla carta
-  discountCalc() {
-    for (let i = 0; i < this.card.badges.length; i++) {
-      if (this.card.badges[i].type === "discount") {
-        const discountValue = parseFloat(this.card.badges[i].value);
-        const finalPrice = (
-          (this.card.price * (100 + discountValue)) /
-          100
-        ).toFixed(2); // Calcola il prezzo scontato due decimali
-
-        return finalPrice;
+    // Metodo per calcolare il prezzo scontato, se presente, sulla carta
+    discountCalc() {
+      for (let i = 0; i < this.card.badges.length; i++) {
+        if (this.card.badges[i].type === "discount") {
+          const discountValue = parseFloat(this.card.badges[i].value);
+          const finalPrice = (
+            (this.card.price * (100 + discountValue)) /
+            100
+          ).toFixed(2); // Calcola il prezzo scontato due decimali
+  
+          return finalPrice;
+        }
       }
-    }
-    return this.card.price;// Se non ci sono sconti, restituisce il prezzo normale
+      return this.card.price;// Se non ci sono sconti, restituisce il prezzo normale
+    },
   },
 }
 </script>

@@ -5,7 +5,7 @@ export default{
             companyName: "Boolando s.r.l",
             description: [ "Informazioni legali", "Informativa sulla privacy"," Diritto di recesso" ],
             findUs: "Trovaci anche su",
-            social: ["Twitter", "Facebook", "Insta", "Pinterest", "YouTube"] 
+            social: [['fab', 'square-facebook'], ['fab', 'square-twitter'], ['fab', 'square-pinterest'], ['fab', 'square-instagram'],['fab', 'square-youtube']],
         }
     }
 }
@@ -24,8 +24,8 @@ export default{
             <div class="social-container">
                 <p class="find-us">{{ findUs }}</p>
                 <ul class="social">
-                    <li>
-                        <!-- <font-awesome-icon icon="fa-solid fa-square-twitter" /> -->
+                    <li  class="icons">
+                        <font-awesome-icon v-for="icon in social" :icon="icon" />
 
                     </li>
                 </ul>
@@ -78,6 +78,14 @@ export default{
     .social{
         display: flex;
         gap: 10px;
+
     }
+    
+    .icons{
+            display: flex;
+            color: white;
+            gap: 10px;
+            cursor: pointer;
+        }
 }
 </style>

@@ -13,7 +13,7 @@ export default {
   },
   data() {
     return {
-      store: store // Assegna il tuo oggetto "store" alla proprietà "store" dei dati
+      store: store, // Assegna il tuo oggetto "store" alla proprietà "store" dei dati
     }
   },
 

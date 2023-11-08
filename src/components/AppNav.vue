@@ -4,7 +4,7 @@ export default {
     return {
       categories: ["Donna", "Uomo", "Bambino"],
       logo: "/boolean-logo.png",
-      icons: ["person", "heart", "shopping-bag"],
+      icons: [['fas', 'user'], ['far', 'heart'], ['fas', 'bag-shopping']],
     };
   },
 };
@@ -19,13 +19,7 @@ export default {
             <a href="#">{{ category }}</a>
           </li>
           <li class="logo"><img :src="logo" alt=""></li>
-          <li class="icons">
-            <font-awesome-icon icon="fa-solid fa-user" />
-            <font-awesome-icon icon="fa-solid fa-heart" />
-            <font-awesome-icon icon="fa-solid fa-bag-shopping" />
-
-
-          </li>
+          <font-awesome-icon class="icons" v-for="icon in icons" :icon="icon" />
         </ul>
       </nav>
     </div>
