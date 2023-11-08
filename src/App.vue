@@ -2,16 +2,17 @@
 import AppNav from './components/AppNav.vue';
 import AppMainContent from './components/AppMainContent.vue';
 import AppFooter from './components/AppFooter.vue';
-import Json from './db.json';
+import {store} from './store';
 export default {
     components: {
     AppNav,
     AppMainContent,
     AppFooter
+
 },
   data() {
     return {
-      cards: Json
+      cards: store.items
     }
   }
 }

@@ -24,7 +24,10 @@ export default{
             <div class="social-container">
                 <p class="find-us">{{ findUs }}</p>
                 <ul class="social">
-                    <li v-for="info in social"><a href="#">{{ info }}</a></li>
+                    <li>
+                        <!-- <font-awesome-icon icon="fa-solid fa-square-twitter" /> -->
+
+                    </li>
                 </ul>
             </div>
 

@@ -18,8 +18,14 @@ export default {
           <li v-for="category in categories">
             <a href="#">{{ category }}</a>
           </li>
-          <li class="logo"><img  :src="logo" alt=""></li>
-          <li v-for="icon in icons" class="icons"><a href="#">{{ icon }}</a></li>
+          <li class="logo"><img :src="logo" alt=""></li>
+          <li class="icons">
+            <font-awesome-icon icon="fa-solid fa-user" />
+            <font-awesome-icon icon="fa-solid fa-heart" />
+            <font-awesome-icon icon="fa-solid fa-bag-shopping" />
+
+
+          </li>
         </ul>
       </nav>
     </div>
@@ -52,10 +58,16 @@ export default {
   flex-grow: 1;
   display: flex;
   justify-content: center;
-  
-  img{
+
+  img {
     max-width: 100px;
   }
 }
 
+.icons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: white;
+}
 </style>
