@@ -1,5 +1,6 @@
 <script>
 export default {
+  emits: ['heart', 'modal'],
   data() {
     return {};
   },
@@ -12,7 +13,7 @@ export default {
       this.$emit('heart')
     },
     openModal(){
-      this.$emit('modal')
+      this.$emit('modal', this.card)
     }
 
   },

@@ -5,16 +5,19 @@ import AppFooter from './components/AppFooter.vue';
 import { store } from './store';  // Importa il tuo oggetto "store" reattivo
 import axios from 'axios';
 export default {
+
   components: {
     AppNav,
     AppMainContent,
-    AppFooter
+    AppFooter,
 
   },
+
   data() {
     return {
       store: store, // Assegna il tuo oggetto "store" alla proprietà "store" dei dati
       open: false,
+      currentCard:{}
     }
   },
 
@@ -31,8 +34,13 @@ export default {
       this.store.items[i].isInFavorites = !this.store.items[i].isInFavorites
     },
 
-    modalShow(){
+    showModal(card){
       this.open = true;
+      this.currentCard = card;
+      console.log(card)
+    },
+    closeModal(){
+      this.open = false;
     }
   }
 }
@@ -45,15 +53,15 @@ export default {
   <div class="container">
     <div class="row">
       <div class="card" v-for=" (element, i) in store.items">
-        <AppMainContent @modal="modalShow()" @heart="heartItem(i)" :card="element" />
+        <AppMainContent @modal="showModal()" @heart="heartItem(i)" :card="element" />
       </div>
     </div>
   </div>
   <AppFooter />
   <div class="modal" v-show="open === true">
     <div class="content">
-      <p>test</p>
-      <font-awesome-icon icon="fa-solid fa-circle-xmark" />
+      <!-- <p>{{currentCard.brand}}</p> -->
+      <font-awesome-icon  @click="closeModal()" icon="fa-solid fa-circle-xmark" />
     </div>
   </div>
 </template>
