@@ -109,7 +109,7 @@ export default {
     border-radius: 20px;
     padding: 20px;
     width: 100%;
-    max-width: 450px;
+    max-width:500px;
     display: flex;
     justify-content: space-between;
 
@@ -129,6 +129,10 @@ export default {
     width: 100px;
     margin-top: 20px;
     padding-top: 10px;
+
+    img{
+      border: 1px solid black;
+    }
   }
 }
 </style>
