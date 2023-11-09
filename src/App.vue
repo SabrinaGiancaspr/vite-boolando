@@ -61,7 +61,7 @@ export default {
   <AppFooter />
   <div class="modal" v-show="open === true">
     <div class="content">
-      <ul>
+      <ul class="info">
         <li>Brand:{{ currentCard.brand }}</li>
         <li>Name:{{ currentCard.name }}</li>
         <li>Price:{{ currentCard.price }} &euro;</li>
@@ -71,7 +71,14 @@ export default {
           <span v-if="currentCard.isInFavorites === true">Yes</span>
           <span v-else>No</span>
         </li>
+
       </ul>
+      <div class="small-img">
+        <img :src="currentCard.frontImage" alt="">
+        <img :src="currentCard.backImage" alt="">
+      </div>
+
+
       <font-awesome-icon @click="closeModal()" icon="fa-solid fa-circle-xmark" />
     </div>
   </div>
@@ -106,9 +113,22 @@ export default {
     display: flex;
     justify-content: space-between;
 
+    .info{
+      margin-top: 25px;
+    }
+
     .fa-circle-xmark {
       cursor: pointer;
+      font-size: 20px;
+
     }
+  }
+
+  .small-img {
+    display: flex;
+    width: 100px;
+    margin-top: 20px;
+    padding-top: 10px;
   }
 }
 </style>
