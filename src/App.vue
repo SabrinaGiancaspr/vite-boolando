@@ -67,6 +67,10 @@ export default {
         <li>Price:{{ currentCard.price }} &euro;</li>
         <li>Discount Price:{{ currentDiscountPrice }}&euro;</li>
         <li v-for="item in currentCard.badges">{{ item.type }} : {{ item.value }}</li>
+        <li>Liked:
+          <span v-if="currentCard.isInFavorites === true">Yes</span>
+          <span v-else>No</span>
+        </li>
       </ul>
       <font-awesome-icon @click="closeModal()" icon="fa-solid fa-circle-xmark" />
     </div>
