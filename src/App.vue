@@ -50,7 +50,6 @@ export default {
 
 <template>
   <AppNav />
-
   <div class="container">
     <div class="row">
       <div class="card" v-for=" (element, i) in store.items">
@@ -59,26 +58,23 @@ export default {
     </div>
   </div>
   <AppFooter />
-  <div class="modal" v-show="open === true">
-    <div class="content">
+  <div @click="closeModal()" class="modal" v-show="open === true">
+    <div class="content" @click.stop="">
       <ul class="info">
-        <li>Brand:{{ currentCard.brand }}</li>
-        <li>Name:{{ currentCard.name }}</li>
-        <li>Price:{{ currentCard.price }} &euro;</li>
-        <li>Discount Price:{{ currentDiscountPrice }}&euro;</li>
+        <li>Brand: {{ currentCard.brand }}</li>
+        <li>Name: {{ currentCard.name }}</li>
+        <li>Price: {{ currentCard.price }} &euro;</li>
+        <li>Discount Price: {{ currentDiscountPrice }}&euro;</li>
         <li v-for="item in currentCard.badges">{{ item.type }} : {{ item.value }}</li>
         <li>Liked:
-          <span v-if="currentCard.isInFavorites === true">Yes</span>
-          <span v-else>No</span>
+          <span v-if="currentCard.isInFavorites === true"> Yes</span>
+          <span v-else> No</span>
         </li>
-
       </ul>
       <div class="small-img">
         <img :src="currentCard.frontImage" alt="">
         <img :src="currentCard.backImage" alt="">
       </div>
-
-
       <font-awesome-icon @click="closeModal()" icon="fa-solid fa-circle-xmark" />
     </div>
   </div>
@@ -109,11 +105,11 @@ export default {
     border-radius: 20px;
     padding: 20px;
     width: 100%;
-    max-width:500px;
+    max-width: 500px;
     display: flex;
     justify-content: space-between;
 
-    .info{
+    .info {
       margin-top: 25px;
     }
 
@@ -130,7 +126,7 @@ export default {
     margin-top: 20px;
     padding-top: 10px;
 
-    img{
+    img {
       border: 1px solid black;
     }
   }

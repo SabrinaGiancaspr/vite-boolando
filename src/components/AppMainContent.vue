@@ -12,16 +12,16 @@ export default {
     heartFunction() {
       this.$emit('heart')
     },
-    openModal(){
+    openModal() {
       this.$emit('modal', this.card, this.discountedPrice)
       // console.log(this.card)
-    
+
     }
 
   },
   computed: {
-        // Metodo per calcolare il prezzo scontato, se presente, sulla carta
-    discountedPrice () {
+    // Metodo per calcolare il prezzo scontato, se presente, sulla carta
+    discountedPrice() {
       for (let i = 0; i < this.card.badges.length; i++) {
         if (this.card.badges[i].type === "discount") {
           const discountValue = parseFloat(this.card.badges[i].value);
@@ -29,7 +29,7 @@ export default {
             (this.card.price * (100 + discountValue)) /
             100
           ).toFixed(2); // Calcola il prezzo scontato due decimali
-  
+
           return finalPrice;
         }
       }
