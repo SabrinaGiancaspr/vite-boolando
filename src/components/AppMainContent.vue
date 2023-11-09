@@ -9,9 +9,11 @@ export default {
   methods: {
     // Metodo per gestire il click sul cuore per aggiungere/rimuovere dai preferiti
     heartFunction() {
-      this.card.isInFavorites = !this.card.isInFavorites; // Inverte lo stato "isInFavorites" della carta
+      this.$emit('heart')
     },
-
+    openModal(){
+      this.$emit('modal')
+    }
 
   },
   computed: {
@@ -48,7 +50,7 @@ export default {
   </div>
 
   <p class="brand">{{ card.brand }}</p>
-  <p class="description">{{ card.name.toUpperCase() }}</p>
+  <p class="description" @click="openModal()">{{ card.name.toUpperCase() }}</p>
   <div class="price-container">
     <!-- Visualizza il prezzo scontato, se presente -->
     <p class="discount-price">{{ discountedPrice }} &euro;</p>
