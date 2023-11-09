@@ -11,8 +11,12 @@ export default {
     heartFunction() {
       this.card.isInFavorites = !this.card.isInFavorites; // Inverte lo stato "isInFavorites" della carta
     },
-    // Metodo per calcolare il prezzo scontato, se presente, sulla carta
-    discountCalc() {
+
+
+  },
+  computed: {
+        // Metodo per calcolare il prezzo scontato, se presente, sulla carta
+    discountedPrice () {
       for (let i = 0; i < this.card.badges.length; i++) {
         if (this.card.badges[i].type === "discount") {
           const discountValue = parseFloat(this.card.badges[i].value);
@@ -25,8 +29,8 @@ export default {
         }
       }
       return this.card.price;// Se non ci sono sconti, restituisce il prezzo normale
-    },
-  },
+    }
+  }
 }
 </script>
 
@@ -47,9 +51,9 @@ export default {
   <p class="description">{{ card.name.toUpperCase() }}</p>
   <div class="price-container">
     <!-- Visualizza il prezzo scontato, se presente -->
-    <p class="discount-price">{{ discountCalc() }} &euro;</p>
+    <p class="discount-price">{{ discountedPrice }} &euro;</p>
     <!-- Visualizza il prezzo normale se è diverso dal prezzo scontato -->
-    <p class="price" v-show="card.price != discountCalc()">{{ card.price }} &euro;</p>
+    <p class="price" v-show="card.price != discountedPrice">{{ card.price }} &euro;</p>
 
   </div>
 </template>
