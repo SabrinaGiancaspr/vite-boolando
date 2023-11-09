@@ -17,7 +17,8 @@ export default {
     return {
       store: store, // Assegna il tuo oggetto "store" alla proprietà "store" dei dati
       open: false,
-      currentCard: {}
+      currentCard: {},
+      currentDiscountPrice: '',
     }
   },
 
@@ -34,10 +35,12 @@ export default {
       this.store.items[i].isInFavorites = !this.store.items[i].isInFavorites
     },
 
-    showModal(card) {
+    showModal(card, discountedPrice) {
       this.open = true;
       this.currentCard = card;
+      this.currentDiscountPrice = discountedPrice
     },
+
     closeModal() {
       this.open = false;
     }
@@ -59,10 +62,11 @@ export default {
   <div class="modal" v-show="open === true">
     <div class="content">
       <ul>
-        <li>{{ currentCard.brand  }}</li>
-        <li>{{ currentCard.name  }}</li>
-        <li>{{ currentCard.price }} &euro;</li>
-        <li></li>
+        <li>Brand:{{ currentCard.brand }}</li>
+        <li>Name:{{ currentCard.name }}</li>
+        <li>Price:{{ currentCard.price }} &euro;</li>
+        <li>Discount Price:{{ currentDiscountPrice }}&euro;</li>
+        <li v-for="item in currentCard.badges">{{ item.type }} : {{ item.value }}</li>
       </ul>
       <font-awesome-icon @click="closeModal()" icon="fa-solid fa-circle-xmark" />
     </div>

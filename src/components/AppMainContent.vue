@@ -13,8 +13,9 @@ export default {
       this.$emit('heart')
     },
     openModal(){
-      this.$emit('modal', this.card)
+      this.$emit('modal', this.card, this.discountedPrice)
       // console.log(this.card)
+    
     }
 
   },
