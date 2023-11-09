@@ -17,7 +17,7 @@ export default {
     return {
       store: store, // Assegna il tuo oggetto "store" alla proprietà "store" dei dati
       open: false,
-      currentCard:{}
+      currentCard: {}
     }
   },
 
@@ -30,16 +30,15 @@ export default {
 
   },
   methods: {
-    heartItem(i){
+    heartItem(i) {
       this.store.items[i].isInFavorites = !this.store.items[i].isInFavorites
     },
 
-    showModal(card){
+    showModal(card) {
       this.open = true;
       this.currentCard = card;
-      console.log(card)
     },
-    closeModal(){
+    closeModal() {
       this.open = false;
     }
   }
@@ -49,19 +48,23 @@ export default {
 <template>
   <AppNav />
 
-
   <div class="container">
     <div class="row">
       <div class="card" v-for=" (element, i) in store.items">
-        <AppMainContent @modal="showModal()" @heart="heartItem(i)" :card="element" />
+        <AppMainContent @modal="showModal" @heart="heartItem(i)" :card="element" />
       </div>
     </div>
   </div>
   <AppFooter />
   <div class="modal" v-show="open === true">
     <div class="content">
-      <!-- <p>{{currentCard.brand}}</p> -->
-      <font-awesome-icon  @click="closeModal()" icon="fa-solid fa-circle-xmark" />
+      <ul>
+        <li>{{ currentCard.brand  }}</li>
+        <li>{{ currentCard.name  }}</li>
+        <li>{{ currentCard.price }} &euro;</li>
+        <li></li>
+      </ul>
+      <font-awesome-icon @click="closeModal()" icon="fa-solid fa-circle-xmark" />
     </div>
   </div>
 </template>
@@ -69,18 +72,19 @@ export default {
 <style lang="scss">
 @use './style/general.scss';
 
-.modal{
- &::after{
-  content: '';
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  z-index: 40;
-  background-color: rgba(0, 0, 0, 0.5);
- }
-  .content{
+.modal {
+  &::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 40;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .content {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -94,7 +98,7 @@ export default {
     display: flex;
     justify-content: space-between;
 
-    .fa-circle-xmark{
+    .fa-circle-xmark {
       cursor: pointer;
     }
   }

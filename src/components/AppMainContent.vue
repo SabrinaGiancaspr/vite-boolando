@@ -14,6 +14,7 @@ export default {
     },
     openModal(){
       this.$emit('modal', this.card)
+      // console.log(this.card)
     }
 
   },
