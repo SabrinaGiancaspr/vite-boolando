@@ -18,7 +18,7 @@ export default {
 
     }
 
-  },
+  },  
   computed: {
     // Metodo per calcolare il prezzo scontato, se presente, sulla carta
     discountedPrice() {

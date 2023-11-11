@@ -15,7 +15,7 @@ export default {
 
   data() {
     return {
-      store: store, // Assegna il tuo oggetto "store" alla proprietà "store" dei dati
+          // Assegna il tuo oggetto "store" alla proprietà "store" dei dati
       open: false,
       currentCard: {},
       currentDiscountPrice: '',
